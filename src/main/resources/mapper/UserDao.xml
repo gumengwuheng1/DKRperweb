@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.dkrperweb.dao.UserDao">
+
+    <resultMap type="org.example.dkrperweb.entity.User" id="UserMap">
+        <result property="uId" column="u_id" jdbcType="INTEGER"/>
+        <result property="uName" column="u_name" jdbcType="VARCHAR"/>
+        <result property="uHeadPortrait" column="u_head_portrait" jdbcType="VARCHAR"/>
+        <result property="uCreationTime" column="u_creation_time" jdbcType="TIMESTAMP"/>
+        <result property="uModificationTime" column="u_modification_time" jdbcType="TIMESTAMP"/>
+    </resultMap>
+
+
+
+</mapper>
+

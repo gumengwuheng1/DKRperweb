@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.dkrperweb.dao.ArticleDao">
+    <resultMap type="org.example.dkrperweb.entity.Article" id="ArticleMap">
+        <result property="aId" column="a_id" jdbcType="INTEGER"/>
+        <result property="aName" column="a_name" jdbcType="VARCHAR"/>
+        <result property="aContent" column="a_content" jdbcType="VARCHAR"/>
+        <result property="aCreator" column="a_creator" jdbcType="VARCHAR"/>
+        <result property="aCreationTime" column="a_creation_time" jdbcType="TIMESTAMP"/>
+        <result property="aModificationTime" column="a_modification_time" jdbcType="TIMESTAMP"/>
+        <result property="aModifier" column="a_modifier" jdbcType="VARCHAR"/>
+        <result property="aState" column="a_state" jdbcType="INTEGER"/>
+    </resultMap>
+    <!--    新增文章   -->
+    <insert id="ArticleInsert">
+        insert into article(a_id,
+                            a_name,
+                            a_content,
+                            a_creator,
+                            a_creation_time,
+                            a_modification_time,
+                            a_modifier,
+                            a_state)
+        values (#{aId}, #{aName}, #{aContent}, #{aCreator}, #{aCreationTime}, #{aModificationTime}, #{aModifier},
+                #{aState})
+    </insert>
+    <!-- 删除文章 -->
+    <update id="ArticleDelete">
+        update article
+        set a_state = #{aState}
+        where a_id = #{aId};
+    </update>
+    <!--修改文章-->
+    <update id="ArticleUpdate">
+        update article
+        <set>
+            <if test="aName != null and aName != ''">
+                a_name = #{aName},
+            </if>
+            <if test="aContent != null and aContent != ''">
+                a_content = #{aContent},
+            </if>
+            <if test="aCreator != null and aCreator != ''">
+                a_creator = #{aCreator},
+            </if>
+            <if test="aModificationTime != null and aModificationTime != ''">
+                a_modification_time = #{aModificationTime},
+            </if>
+            <if test="aModifier != null and aModifier != ''">
+                a_modifier = #{aModifier},
+            </if>
+            <if test="aState != null and aState != ''">
+                a_state = #{aState}
+            </if>
+        </set>
+        <where>
+            a_id = #{aId}
+        </where>
+    </update>
+    <!--查看单个文章信息-->
+    <select id="ArticleLook" resultMap="ArticleMap">
+        select a_name,a_content,a_creator,a_creation_time,a_modification_time
+        from article
+        <where>
+            a_id = #{aId};
+        </where>
+    </select>
+    <!--分页查看文章内容-->
+    <select id="ArticleList" resultMap="ArticleMap">
+        select a_name, a_content, a_creator, a_creation_time
+        from article
+    </select>
+</mapper>
+

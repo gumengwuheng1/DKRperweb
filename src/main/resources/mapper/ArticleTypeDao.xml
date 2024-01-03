@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="org.example.dkrperweb.dao.ArticleTypeDao">
+
+    <resultMap type="org.example.dkrperweb.entity.ArticleType" id="ArticleTypeMap">
+        <result property="atId" column="at_id" jdbcType="INTEGER"/>
+        <result property="atName" column="at_name" jdbcType="VARCHAR"/>
+        <result property="atCreator" column="at_creator" jdbcType="VARCHAR"/>
+        <result property="atCreationTime" column="at_creation_time" jdbcType="TIMESTAMP"/>
+        <result property="atModificationTime" column="at_modification_time" jdbcType="TIMESTAMP"/>
+        <result property="atAModifier" column="at_a_modifier" jdbcType="VARCHAR"/>
+    </resultMap>
+
+
+
+</mapper>
+
