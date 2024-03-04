@@ -58,6 +58,16 @@ public class PromptRule<T> {
     }
 
     /**
+     * 成功带提示不带值
+     *
+     * @param msg
+     * @return
+     */
+    public PromptRule<T> success(String msg) {
+        return new PromptRule<T>(msg, SUCCESS, null);
+    }
+
+    /**
      * 失败带提示
      *
      * @param msg
